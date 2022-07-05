@@ -19,13 +19,13 @@ class DirectorSchema(Schema):
     name = fields.Str()
 
 director_schema = DirectorSchema()
-director_schema = DirectorSchema(many=True)
+directors_schema = DirectorSchema(many=True)
 
 class GenreSchema(Schema):
     id = fields.Int()
     name = fields.Str()
 
 genre_schema = GenreSchema()
-genre_schema = GenreSchema(many=True)
+genres_schema = GenreSchema(many=True)
 
    
