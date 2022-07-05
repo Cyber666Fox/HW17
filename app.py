@@ -120,7 +120,7 @@ class DirectorsView(Resource):
             Director.id, 
             Director.name)
         all_directors = director.all()
-        return director_schema.dump(all_directors), 200
+        return directors_schema.dump(all_directors), 200
 
 
 @movie_ns.route("/<int:director_id>")
@@ -140,7 +140,7 @@ class GenreView(Resource):
             Genre.id, 
             Genre.name)
         all_genre = genre.all()
-        return genre_schema.dump(all_genre), 200
+        return genres_schema.dump(all_genre), 200
 
 
 @movie_ns.route("/<int:genre_id>")
