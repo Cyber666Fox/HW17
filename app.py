@@ -39,7 +39,7 @@ class MoviesView(Resource):
             move_with_genre_and_director = move_with_genre_and_director.filter(Movie.genre_id == genre_id)
         
         movies_list = move_with_genre_and_director.all()
-        return movie_schema.dump(movies_list), 200
+        return movies_schema.dump(movies_list), 200
 
     def post(self):
         req_json = request.json
@@ -123,7 +123,7 @@ class DirectorsView(Resource):
         return directors_schema.dump(all_directors), 200
 
 
-@movie_ns.route("/<int:director_id>")
+@director_ns.route("/<int:director_id>")
 class DirectorView(Resource):
     def get(self,director_id: int):
         director = db.session.query(
@@ -133,7 +133,7 @@ class DirectorView(Resource):
             return director_schema.dump(director)
         return 'Нет такого режиссера.',404
 
-@director_ns.route("/")
+@genre_ns.route("/")
 class GenreView(Resource):
     def get(self):
         genre = db.session.query(
@@ -143,7 +143,7 @@ class GenreView(Resource):
         return genres_schema.dump(all_genre), 200
 
 
-@movie_ns.route("/<int:genre_id>")
+@genre_ns.route("/<int:genre_id>")
 class GenreView(Resource):
     def get(self,genre_id: int):
         genre = db.session.query(
